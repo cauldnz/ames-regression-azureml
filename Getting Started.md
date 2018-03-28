@@ -19,12 +19,11 @@ You&#39;ll be working in teams, each with a CSE mentor. We&#39;ve tried to match
 | Raman K | Haris Izmee | Wendy J | Valerie B | Rob B |
 | Vivek P | Michelle S | Davina Y | Al Koh | Dhanawat S |
 | Lee M | Alberto G | Vikram B | Kevin Wo | Andrew C |
-|   |   |   |   |   |
-|   |   |   |   |   |
 
 # Getting Setup and Getting Your Data
 
 We&#39;ll be using Azure Machine Learning Studio which is a graphical data science tool as part of Azure.
+
 The data set that we&#39;ll be using is called the _Ames Housing Data Set._ This has been made available on the Machine Learning competition website called Kaggle. You might like to explore this link to get some ideas when you arrive at the feature engineering steps below. [https://www.kaggle.com/c/house-prices-advanced-regression-techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
 
 With that, let&#39;s get the show on the road.
@@ -32,18 +31,18 @@ With that, let&#39;s get the show on the road.
 1. **Browse** to the URL [_http://aka.ms/ames-dataset_](http://aka.ms/ames-dataset)
 2. **Download** the file to your _Desktop_
 3. **Open** AML Studio. [http://studio.azureml.net](http://studio.azureml.net)
-4. **Click** the S_ign Up Here_ link
+4. **Click** the _Sign Up Here_ link
 5. **Click** the green coloured _Sign In_ button for the _Free Workspace_
 6. Use your Live ID to **Sign In**
 7. **Click** n the _Datasets_ icon on the left of the page
-8. **Click** n the add _New__+_ button on the bottom left
+8. **Click** n the add _New_ _+_ button on the bottom left
 9. **Click** to upload _From Local File_
 We&#39;ve done some pre-processing of the dataset to make it easier to work with in Azure ML.
   1. **Browse** the \*.arff file you downloaded to _Desktop_
   2. Leave all the default settings and;
   3. And **click** the icon
 10. **Click** on the _Experiments_ icon on the left of the page
-11. **Click** on the add _New__+_ button on the bottom left
+11. **Click** on the add _New_ _+_ button on the bottom left
 12. **Select** the _Blank Experiment_ option
 13. On the left of the page, **expand** the _Saved Datasets &gt; My Datasets_
   1. **Drag** the _ames.arff_ dataset onto the top empty box in the experiment
@@ -59,13 +58,13 @@ Before we do any modelling. Let&#39;s explore the data a little bit. Azure Machi
   3. **Explore** some other features. Which features do you think will be the best predictors of house price? How might we tell?
   4. **Visualize** the _Sale Price_ feature (it&#39;s the last one, right on the right hand side).
 Note that this has _1459 Missing Values_. This is the unlabelled data that we need to make new predictions for.
-  5. **Close** the_Visualize_ window
+  5. **Close** the _Visualize_ window
 3. **Drag** a _Data Transformation &gt; Sample and Split &gt; Split Data_ module onto the canvas below the _ames.arff_. Note that you can also _search_ for modules using the search box.
 We need to split the dataset into the training data (labelled) and the test data (unlabelled).
   1. **Wire** the bottom of the _ames.arff_ dataset to the top of the _Split Data_ module.
   2. **Click** on the _Split Data_ module and note that there are extra settings we can edit on the right of the screen.
     1. **Set** the _Splitting Mode_ to _Relative Expression_
-    2. **Change** the _Relative expression_ to \&quot;SalePrice&quot; &gt; 0
+    2. **Change** the _Relative expression_ to "SalePrice" &gt; 0
 4. **Click** on the _Run_ experiment button at the bottom of the page.
 You will see little green &#39;s appear as the experiment is run.
 5. **Visualize** the output datasets on the _Split Data_ module to check that we have correctly split out training and test data.
@@ -119,7 +118,7 @@ If you scroll to the far right you&#39;ll see that the model has created a _Scor
 9. **Run** the experiment
 10. **Add** an _Edit Metadata_ Module
 11. Use the _Column selector_ to **select** the _Scored Labels_ column
-12. **Set** the _N__ew column names_ value to _SalePrice_
+12. **Set** the _New column names_ value to _SalePrice_
 13. **Run** the Experiment
 14. **Visualize** the last output
 You should see a dataset containing _Id_ and _SalePrice_. This is the dataset that you&#39;ll be submitting at the end of the session.
@@ -160,22 +159,24 @@ You may want to skim the documentation for the dataset to get some ideas the you
 2. Create some features using the _Execute R Script_ module.
 The R Code below creates a feature that is mentioned in the Amstat journal paper. Specifically, the total of _Total Bsmt SqFt + Gr Liv Area_. Experiment with your own ideas based on what you think might influence price. You should create your features just above the data split so that they are created correctly for both Training and Testing data. When you create features you can try running (Use _Run selected_!) the _Filter Based Feature Selection_ module again for a quick check of expected performance.
 
-# Map 1-based optional input ports to variables
-dataset1 &lt;- maml.mapInputPort(1) # class: data.frame
+# Map 1 - based optional input ports to variables
+```r
+dataset1 <- maml.mapInputPort(1) # class: data.frame
+```
 
 #Create a new column that adds
 ```r
-dataset1$SumOfArea &lt;- dataset1$TotalBsmtSF + dataset1$GrLivArea
+dataset1$SumOfArea <- dataset1$TotalBsmtSF + dataset1$GrLivArea
 ```
 
 # Sample operation
 ```r
-data.set &lt;- dataset1;
+data.set <- dataset1;
 ```
 
 # Select data.frame to be sent to the output Dataset port
 ```r
-maml.mapOutputPort(&quot;data.set&quot;);
+maml.mapOutputPort('data.set');
 ```
 
 # Training and Submitting your final model
