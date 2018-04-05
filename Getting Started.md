@@ -12,14 +12,6 @@ In this &#39;Hour of Code&#39; the CSE team from around APAC hope to teach you t
 
 You&#39;ll be working in teams, each with a CSE mentor. We&#39;ve tried to match you up with a mentor from your area or country where possible. At CSE we&#39;re all about code-with…. For the purposes of this exercise we want you all to be doing more of the _code_ and our mentors to be doing more of the _with._ You are welcome to have multiple laptops so that you can each learn and experiment, but, your final submission will be a single model prediction.
 
-| **Team Alpha** | **Team Beta** | **Team Charlie** | **Team Delta** | **Team Echo** |
-| --- | --- | --- | --- | --- |
-| _Cheng Bin Tham_ | _Seok Chern Ngan_ | _Toan Huynh_ | _Kenneth Ham_ | _Arnie Locsin_ |
-| Andrea DM | Ricky K | Truong Pham | Barrie Sheers | Hans Bayaborda |
-| Raman K | Haris Izmee | Wendy J | Valerie B | Rob B |
-| Vivek P | Michelle S | Davina Y | Al Koh | Dhanawat S |
-| Lee M | Alberto G | Vikram B | Kevin Wo | Andrew C |
-
 # Getting Setup and Getting Your Data
 
 We&#39;ll be using Azure Machine Learning Studio which is a graphical data science tool as part of Azure.
